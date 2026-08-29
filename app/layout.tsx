@@ -4,25 +4,25 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://chinesebloom.com"),
   title: {
-    default: "ChineseBloom – Mandarin Listening & Speaking Practice",
+    default: "Mandarin Listening & Speaking Practice for Intermediate Learners | ChineseBloom",
     template: "%s · ChineseBloom",
   },
   description:
-    "Practice Mandarin listening and speaking in 20 minutes a day with dictation, shadowing, and retelling for HSK 3–4 learners.",
+    "Practice Mandarin listening and speaking with natural HSK 3–4 conversations. Listen, dictate, shadow, and retell in one free 20-minute lesson.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "ChineseBloom",
-    title: "ChineseBloom – From Textbook Chinese to Natural Conversation",
+    title: "Mandarin Listening & Speaking Practice | ChineseBloom",
     description:
-      "Mandarin listening and speaking practice for intermediate learners.",
+      "Natural Mandarin listening and speaking practice for intermediate HSK 3–4 learners.",
     url: "/",
   },
   twitter: {
     card: "summary",
-    title: "ChineseBloom – Mandarin Listening & Speaking Practice",
+    title: "Mandarin Listening & Speaking Practice | ChineseBloom",
     description:
-      "Move from textbook Chinese to natural speaking in 20 minutes a day.",
+      "Turn Mandarin you understand into natural speech with a free 20-minute lesson.",
   },
   icons: {
     icon: "/favicon.svg",

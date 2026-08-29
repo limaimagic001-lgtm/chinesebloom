@@ -16,8 +16,8 @@ export default function FreeLessonPage() {
       <header className="lesson-header">
         <div className="lesson-header-inner shell">
           <Link className="brand" href="/" aria-label="ChineseBloom home">
-            <span className="brand-mark" aria-hidden="true">中</span>
-            ChineseBloom
+            <span className="lesson-brand-mark" aria-hidden="true">中</span>
+            <span>ChineseBloom</span>
           </Link>
           <Link href="/">← Back to the overview</Link>
         </div>

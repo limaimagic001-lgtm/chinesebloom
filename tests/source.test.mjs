@@ -57,3 +57,22 @@ test("uses a native Next.js Vercel build", async () => {
   assert.equal(vercel.framework, "nextjs");
   assert.equal(vercel.buildCommand, "npx next build");
 });
+
+test("targets the selected Mandarin listening and speaking search intent", async () => {
+  const layout = await read("app/layout.tsx");
+  const page = await read("app/page.tsx");
+  assert.match(layout, /Mandarin Listening & Speaking Practice for Intermediate Learners/);
+  assert.match(page, /MANDARIN LISTENING &amp; SPEAKING PRACTICE/);
+  assert.match(page, /HSK 3–4/);
+  assert.match(page, /Listen, dictate, shadow, and retell/);
+});
+
+test("keeps the free-lesson conversion path immediate and low-friction", async () => {
+  const page = await read("app/page.tsx");
+  const player = await read("components/phrase-player.tsx");
+  assert.match(page, /Start the free lesson/);
+  assert.match(page, /No sign-up required/);
+  assert.match(page, /mobile-conversion-bar/);
+  assert.match(player, /SpeechSynthesisUtterance/);
+  assert.match(player, /Play Mandarin phrase/);
+});

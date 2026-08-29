@@ -2,42 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  BookOpenText,
   Check,
   Ear,
   MessageCircleMore,
   Mic2,
-  Play,
-  Sparkles,
+  PencilLine,
 } from "lucide-react";
 
+import { PhrasePlayer } from "@/components/phrase-player";
 import { Button } from "@/components/ui/button";
 
 const method = [
-  {
-    number: "01",
-    title: "Listen closely",
-    copy: "Hear a natural Mandarin conversation before you see the words.",
-    icon: Ear,
-  },
-  {
-    number: "02",
-    title: "Dictate & correct",
-    copy: "Write what you hear, then find the sounds and phrases you missed.",
-    icon: BookOpenText,
-  },
-  {
-    number: "03",
-    title: "Shadow the speaker",
-    copy: "Copy the rhythm, tones, and connected speech line by line.",
-    icon: Mic2,
-  },
-  {
-    number: "04",
-    title: "Retell naturally",
-    copy: "Put the transcript away and express the same ideas in your own words.",
-    icon: MessageCircleMore,
-  },
+  { number: "01", title: "Listen", copy: "Hear one natural conversation in context. No transcript yet.", icon: Ear },
+  { number: "02", title: "Dictate", copy: "Write what you hear and notice exactly where speech blurred.", icon: PencilLine },
+  { number: "03", title: "Shadow", copy: "Copy the tones, rhythm, and connected speech line by line.", icon: Mic2 },
+  { number: "04", title: "Retell", copy: "Put the transcript away and express the idea in your own words.", icon: MessageCircleMore },
 ];
 
 export default function Home() {
@@ -45,152 +24,94 @@ export default function Home() {
     <main>
       <header className="site-header">
         <Link className="brand" href="/" aria-label="ChineseBloom home">
-          <span className="brand-mark" aria-hidden="true">
-            中
-          </span>
-          ChineseBloom
+          <Image className="brand-mark-image" src="/favicon.svg" alt="" width={36} height={36} />
+          <span>ChineseBloom</span>
         </Link>
         <nav className="header-links" aria-label="Main navigation">
-          <a href="#method">How it works</a>
+          <a href="#method">Method</a>
           <Link href="/free-lesson">Free lesson</Link>
-          <Button asChild className="header-cta">
-            <Link href="/free-lesson">Start practicing</Link>
-          </Button>
+          <Button asChild className="header-cta"><Link href="/free-lesson">Start free lesson</Link></Button>
         </nav>
       </header>
 
-      <section className="hero shell">
-        <div className="hero-copy">
-          <div className="eyebrow">
-            <Sparkles aria-hidden="true" /> For HSK 3–4 learners
-          </div>
-          <h1>
-            From textbook Chinese to <em>natural conversation.</em>
-          </h1>
-          <p className="hero-lead">
-            Turn the Mandarin you understand into words you can actually say —
-            with one focused 20-minute practice a day.
-          </p>
-          <div className="hero-actions">
-            <Button asChild size="lg" className="primary-cta">
-              <Link href="/free-lesson">
-                Try a free Mandarin lesson <ArrowRight aria-hidden="true" />
-              </Link>
-            </Button>
-            <span className="micro-proof">
-              <Check aria-hidden="true" /> No sign-up required
-            </span>
-          </div>
-          <div className="hero-method-line" aria-label="Training sequence">
-            <span>Listen</span>
-            <i>→</i>
-            <span>Dictate</span>
-            <i>→</i>
-            <span>Shadow</span>
-            <i>→</i>
-            <span>Retell</span>
-          </div>
-        </div>
-
-        <div className="hero-visual">
-          <Image
-            src="/chinesebloom-conversation.png"
-            alt="A Mandarin learner having a relaxed conversation with a friend in a tea shop"
-            width={1536}
-            height={1024}
-            sizes="(max-width: 960px) 100vw, 50vw"
-            priority
-          />
-          <div className="phrase-card">
-            <span>Today&apos;s useful phrase</span>
-            <strong>听起来不错</strong>
-            <p>Tīng qǐlái búcuò</p>
-            <small>That sounds good.</small>
-            <Link href="/free-lesson" aria-label="Practice this phrase in the free lesson">
-              <Play aria-hidden="true" fill="currentColor" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="problem-strip">
-        <div className="shell problem-grid">
-          <p className="section-kicker">THE INTERMEDIATE PLATEAU</p>
-          <h2>You know the words. Real conversations still move too fast.</h2>
-          <div className="problem-copy">
-            <p>
-              ChineseBloom is built for the frustrating middle: you can read a
-              lesson, but natural speech blurs together and your own sentences
-              arrive too slowly.
+      <section className="hero">
+        <div className="hero-inner shell">
+          <div className="hero-copy">
+            <p className="eyebrow">MANDARIN LISTENING &amp; SPEAKING PRACTICE · HSK 3–4</p>
+            <h1>Understand Mandarin.<em>Speak it naturally.</em></h1>
+            <p className="hero-lead">
+              Build real listening and speaking confidence with one focused
+              20-minute conversation. Listen, dictate, shadow, and retell.
             </p>
-            <p>
-              Each practice closes that gap by turning one short conversation
-              into listening, speaking, and reusable expression.
-            </p>
+            <div className="hero-actions">
+              <Button asChild size="lg" className="primary-cta">
+                <Link href="/free-lesson">Start the free lesson <ArrowRight aria-hidden="true" /></Link>
+              </Button>
+              <span className="micro-proof"><Check aria-hidden="true" /> No sign-up required</span>
+            </div>
+            <p className="hero-details">HSK 3–4 · About 20 minutes · Works in your browser</p>
+          </div>
+
+          <div className="hero-visual">
+            <Image
+              src="/chinesebloom-song-teahouse.webp"
+              alt="A Mandarin tutor and an intermediate learner having a natural conversation over tea"
+              fill
+              sizes="(max-width: 800px) 100vw, 58vw"
+              priority
+            />
+            <PhrasePlayer />
           </div>
         </div>
       </section>
 
-      <section className="method-section shell" id="method">
-        <div className="section-heading">
-          <p className="section-kicker">ONE CONVERSATION · FOUR ROUNDS</p>
-          <h2>A practice loop designed for active Mandarin.</h2>
-          <p>
-            You do more than replay audio. Every round asks your brain to notice,
-            reproduce, and finally own the language.
-          </p>
-        </div>
-        <div className="method-grid">
-          {method.map((item) => {
-            const Icon = item.icon;
-            return (
-              <article className="method-card" key={item.number}>
-                <div className="method-topline">
-                  <span>{item.number}</span>
-                  <Icon aria-hidden="true" />
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.copy}</p>
-              </article>
-            );
-          })}
-        </div>
+      <section className="transformation shell" aria-labelledby="transformation-title">
+        <h2 className="sr-only" id="transformation-title">From understanding to responding</h2>
+        <article>
+          <p className="section-kicker">BEFORE</p>
+          <h3>I understand the words.</h3>
+          <p>But I still hesitate when it&apos;s my turn to speak.</p>
+        </article>
+        <ArrowRight className="transformation-arrow" aria-hidden="true" />
+        <article className="after-card">
+          <p className="section-kicker">AFTER</p>
+          <h3>I can respond in the moment.</h3>
+          <p>With clearer listening and more natural expression.</p>
+        </article>
       </section>
 
-      <section className="lesson-preview shell">
-        <div className="lesson-preview-copy">
-          <p className="section-kicker">FREE 20-MINUTE LESSON</p>
-          <h2>Weekend plans that change with the weather</h2>
-          <p>
-            Practice a natural HSK 3–4 conversation about making plans, checking
-            the weather, and suggesting a backup idea.
-          </p>
-          <ul>
-            <li><Check aria-hidden="true" /> 60–90 seconds of natural Mandarin</li>
-            <li><Check aria-hidden="true" /> Hanzi, pinyin, and English views</li>
-            <li><Check aria-hidden="true" /> Dictation feedback and line-by-line shadowing</li>
-          </ul>
-          <Button asChild size="lg" className="primary-cta">
-            <Link href="/free-lesson">
-              Start the free lesson <ArrowRight aria-hidden="true" />
-            </Link>
-          </Button>
-        </div>
-        <div className="lesson-ticket" aria-label="Free lesson details">
-          <div className="ticket-top">
-            <span>FREE LESSON · 01</span>
-            <span>HSK 3–4</span>
+      <section className="method-section" id="method">
+        <div className="method-landscape" aria-hidden="true" />
+        <div className="shell method-content">
+          <div className="section-heading">
+            <p className="section-kicker">THE CHINESEBLOOM METHOD</p>
+            <h2>One conversation. Four focused steps.</h2>
+            <p>Listen closely, write what you hear, shadow the rhythm, then retell it in your own words.</p>
           </div>
-          <div className="ticket-character">周</div>
-          <div>
-            <p>Real-life conversation</p>
-            <h3>周末去哪儿？</h3>
-            <span>Where should we go this weekend?</span>
+          <div className="method-grid">
+            {method.map((item) => {
+              const Icon = item.icon;
+              return (
+                <article className="method-card" key={item.number}>
+                  <div className="method-topline"><span>{item.number}</span><Icon aria-hidden="true" /></div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </article>
+              );
+            })}
           </div>
-          <div className="ticket-meta">
-            <span>20 min</span>
-            <span>14 lines</span>
-            <span>4 rounds</span>
+          <div className="method-cta">
+            <div>
+              <p className="section-kicker">FREE LESSON · WEEKEND PLANS</p>
+              <h2>Turn understanding into natural expression.</h2>
+              <p>Start with a complete HSK 3–4 lesson—audio, transcript, pinyin, feedback, and speaking practice included.</p>
+            </div>
+            <div>
+              <Button asChild size="lg" className="primary-cta">
+                <Link href="/free-lesson">Try the free 20-minute lesson <ArrowRight aria-hidden="true" /></Link>
+              </Button>
+              <span>No account. No card. Start immediately.</span>
+            </div>
           </div>
         </div>
       </section>
@@ -198,13 +119,18 @@ export default function Home() {
       <footer className="site-footer shell">
         <div>
           <Link className="brand" href="/">
-            <span className="brand-mark" aria-hidden="true">中</span>
-            ChineseBloom
+            <Image className="brand-mark-image" src="/favicon.svg" alt="" width={34} height={34} />
+            <span>ChineseBloom</span>
           </Link>
           <p>Mandarin listening and speaking practice for intermediate learners.</p>
         </div>
         <Link href="/free-lesson">Free lesson <ArrowRight aria-hidden="true" /></Link>
       </footer>
+
+      <div className="mobile-conversion-bar">
+        <span><strong>Free HSK 3–4 lesson</strong><small>No sign-up · 20 min</small></span>
+        <Button asChild className="header-cta"><Link href="/free-lesson">Start now</Link></Button>
+      </div>
     </main>
   );
 }
