@@ -35,3 +35,16 @@
 ## Visual status
 
 The supplied screenshots establish the pre-fix problems. Post-fix visual confirmation requires new screenshots from the user's Chrome because cloud-browser use is prohibited by the project instructions.
+
+## GitHub and production verification
+
+- Source commit: `12868cfba75e6c83cd96cec314d751adcd8da4da`
+- Vercel deployment status: **SUCCESS**
+- Production URL: `https://chinesebloom.vercel.app/free-lesson`
+- Production page: PASS — HTTP 200
+- Production CSS: PASS — HTTP 200, 48,903 bytes
+- Confirmed in production CSS:
+  - landing-only bottom padding scope
+  - compact 26px lesson heading
+  - 150px mobile practice textarea
+  - same-row Previous / Next navigation
