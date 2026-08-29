@@ -1,42 +1,48 @@
-# Design QA
+# ChineseBloom Option 3 Design QA
 
-- Source visual truth: `/workspace/scratch/ccad1d88e39e/generated_images/exec-2378a260-496c-42bf-8866-068ec1bb568f.png`
+- Date: 2026-08-29
+- Source visual truth: `/workspace/scratch/ccad1d88e39e/generated_images/exec-a8ccd4bf-5268-4dac-b2d8-b49ebb66e6ef.png`
+- Source pixels: 1536 × 960
+- Target route: `/`
+- Intended desktop viewport: 1536 × 960 CSS px at density 1
+- Intended mobile breakpoint: 390 × 844 CSS px at density 1
+- State: default homepage, audio preview idle
 - Implementation screenshot: unavailable
-- Intended desktop viewport: 1440 × 900 CSS px
-- Source dimensions: 1024 × 1536 px
-- State: landing page, default state
 
 **Findings**
 
-- [P2] Browser-rendered comparison is unavailable.
-  - Location: full landing page.
-  - Evidence: source visual was opened and inspected; the implementation could not be captured because cloud-browser use is prohibited and the runtime has no local Chromium executable.
-  - Impact: typography wrapping, image crop, responsive spacing, and the fixed mobile CTA cannot receive pixel-level sign-off.
-  - Fix: compare one desktop and one mobile production screenshot from the user's Chrome against the selected reference.
+- [Blocked] Browser-rendered comparison is unavailable.
+  - Location: homepage full view and responsive states.
+  - Evidence: the source image is available, but the user explicitly requires that no cloud browser be used and no user-supplied Chrome screenshot of the implementation has been received yet.
+  - Impact: typography, image crop, exact spacing, responsive wrapping, hover/focus appearance, and transparency halos cannot be visually certified from code/build output alone.
+  - Fix: after production deployment, capture desktop and mobile screenshots in the user's Chrome and compare them with the source visual.
 
-**Required fidelity surfaces**
+**Static Fidelity Review**
 
-- Fonts and typography: implemented with a restrained serif display stack and sans-serif UI stack; browser render pending.
-- Spacing and layout rhythm: implemented for desktop, tablet, and mobile breakpoints; browser render pending.
-- Colors and tokens: ivory, ink green, celadon, and restrained cinnabar match the selected direction in source.
-- Image quality and assets: real generated WebP assets are used for the hero and Song landscape; both pass HTTP and size checks.
-- Copy and content: final SEO and conversion copy is present in server-rendered HTML.
+- Fonts and typography: the implementation uses the existing serif/sans pairing and the source hierarchy; browser-rendered wrapping remains to be verified.
+- Spacing and layout rhythm: the hero uses a 40/60 desktop split, full-width right image, and mobile single-column fallback; rendered geometry remains to be verified.
+- Colors and visual tokens: deep pine, celadon, warm paper, and cinnabar tokens match the selected direction; rendered contrast remains to be verified.
+- Image quality and asset fidelity: the existing production hero photograph is reused; the selected four-arc mark is a generated RGBA PNG with transparent corners. Crop and favicon appearance remain to be verified.
+- Copy and content: headline, CTA, proof, four steps, audio phrase, and transformation copy match the approved direction.
 
-**Primary interactions tested**
+**Primary Interactions Checked Without Browser UI**
 
-- CTA destinations: source and route verified.
-- Mandarin phrase playback: implementation verified; browser audio playback pending user-Chrome confirmation.
-- Console errors: not checked because no permitted browser runtime is available.
+- Homepage and `/free-lesson` return HTTP 200 from the local production server.
+- The logo asset returns HTTP 200 as an SVG wrapper around the selected 508 × 512 transparent generated PNG.
+- CTA and navigation destinations are present in server-rendered HTML.
+- Speech-synthesis play/stop behavior remains covered by source inspection and build validation; live click behavior awaits browser verification.
+- Console errors: not checked because browser use is blocked by the user's constraint.
 
-**Comparison history**
+**Implementation Checklist**
 
-- Initial implementation: build and HTTP checks passed; browser-rendered evidence unavailable.
+1. Deploy the tested commit to Vercel Production.
+2. Capture desktop and mobile production screenshots in the user's Chrome.
+3. Compare the same viewport/state with the selected source visual.
+4. Fix any P0/P1/P2 differences and update this report to `passed`.
 
-**Implementation checklist**
+**Follow-up Polish**
 
-- Capture desktop production screenshot at approximately 1440 px width.
-- Capture mobile production screenshot at approximately 390 px width.
-- Confirm phrase play/stop behavior in Chrome.
-- Fix any P0/P1/P2 differences found in the visual comparison.
+- Confirm the four-arc mark remains crisp at 24–42 px.
+- Confirm the mobile audio card does not obscure either speaker's face.
 
 final result: blocked
