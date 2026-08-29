@@ -28,6 +28,7 @@
 **Primary Interactions Checked Without Browser UI**
 
 - Homepage and `/free-lesson` return HTTP 200 from the local production server.
+- The deployed homepage, `/free-lesson`, and `/chinesebloom-mark.svg` each return HTTP 200 from `https://chinesebloom.vercel.app`.
 - The logo asset returns HTTP 200 as an SVG wrapper around the selected 508 × 512 transparent generated PNG.
 - CTA and navigation destinations are present in server-rendered HTML.
 - Speech-synthesis play/stop behavior remains covered by source inspection and build validation; live click behavior awaits browser verification.
@@ -35,7 +36,7 @@
 
 **Implementation Checklist**
 
-1. Deploy the tested commit to Vercel Production.
+1. ~~Deploy the tested commit to Vercel Production.~~ Completed and read back successfully.
 2. Capture desktop and mobile production screenshots in the user's Chrome.
 3. Compare the same viewport/state with the selected source visual.
 4. Fix any P0/P1/P2 differences and update this report to `passed`.
