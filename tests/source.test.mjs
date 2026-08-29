@@ -98,3 +98,9 @@ test("uses a compact mobile layout for every free-lesson round", async () => {
   assert.match(css, /lesson-actions[\s\S]*grid-template-columns: 0\.82fr 1\.18fr/);
   assert.match(css, /body:has\(\.mobile-conversion-bar\)/);
 });
+
+test("keeps status labels readable on the dark listening card", async () => {
+  const css = await read("app/globals.css");
+  assert.match(css, /\.audio-stage > \.lesson-label[\s\S]*color: #fff7ee/);
+  assert.match(css, /\.audio-stage > \.lesson-label[\s\S]*background: rgba\(255, 247, 238, 0\.1\)/);
+});

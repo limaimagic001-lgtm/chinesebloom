@@ -536,6 +536,15 @@ button, textarea, select { font: inherit; }
   font-size: 31px;
   font-weight: 560;
 }
+.audio-stage > .lesson-label {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 9px;
+  border: 1px solid rgba(255, 247, 238, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 247, 238, 0.1);
+  color: #fff7ee;
+}
 .audio-stage p { max-width: 560px; color: #d4dfd5; line-height: 1.65; }
 .audio-controls {
   position: relative;
@@ -1072,6 +1081,7 @@ body { background: var(--paper); color: var(--ink); }
   .audio-stage { min-height: 0; }
   .audio-stage::after { width: 180px; height: 180px; right: -72px; bottom: -82px; }
   .audio-stage h3 { margin: 13px 0 7px; font-size: 24px; line-height: 1.16; }
+  .audio-stage > .lesson-label { padding: 5px 8px; }
   .audio-stage p { margin-block: 7px; font-size: 13px; line-height: 1.55; }
   .audio-controls { gap: 8px; margin-top: 15px; }
   .audio-controls button { min-height: 40px; padding-inline: 14px; font-size: 13px; }
