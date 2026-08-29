@@ -1,6 +1,6 @@
 "use client";
 
-import { Pause, Play } from "lucide-react";
+import { AudioWaveform, Pause, Play, Volume2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const phrase = "听起来不错";
@@ -35,20 +35,30 @@ export function PhrasePlayer() {
 
   return (
     <div className="phrase-player">
-      <div>
-        <span>TRY A NATURAL PHRASE</span>
-        <strong lang="zh-CN">听起来不错</strong>
+      <span className="player-label">Play the conversation</span>
+      <div className="player-audio-row">
+        <button
+          type="button"
+          onClick={togglePlayback}
+          aria-label={playing ? "Stop phrase playback" : "Play Mandarin phrase"}
+          aria-pressed={playing}
+        >
+          {playing ? <Pause aria-hidden="true" fill="currentColor" /> : <Play aria-hidden="true" fill="currentColor" />}
+        </button>
+        <AudioWaveform className="player-waveform" aria-hidden="true" />
+        <small>{playing ? "0:01" : "0:00"} / 0:02</small>
+      </div>
+      <div className="player-phrase">
+        <strong lang="zh-CN">听起来不错 <Volume2 aria-hidden="true" /></strong>
         <p>Tīng qǐlái búcuò</p>
         <small>That sounds good.</small>
       </div>
-      <button
-        type="button"
-        onClick={togglePlayback}
-        aria-label={playing ? "Stop phrase playback" : "Play Mandarin phrase"}
-        aria-pressed={playing}
-      >
-        {playing ? <Pause aria-hidden="true" fill="currentColor" /> : <Play aria-hidden="true" fill="currentColor" />}
-      </button>
+      <ol className="player-method" aria-label="Lesson preview steps">
+        <li className="is-current"><span>1</span> Listen</li>
+        <li><span>2</span> Dictate</li>
+        <li><span>3</span> Shadow</li>
+        <li><span>4</span> Retell</li>
+      </ol>
     </div>
   );
 }
