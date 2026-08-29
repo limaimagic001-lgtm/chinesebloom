@@ -21,35 +21,47 @@ const method = [
 
 export default function Home() {
   return (
-    <main>
+    <main className="home-page">
       <header className="site-header">
         <Link className="brand" href="/" aria-label="ChineseBloom home">
-          <Image className="brand-mark-image" src="/chinesebloom-mark.svg" alt="" width={36} height={36} />
+          <Image className="brand-mark-image" src="/chinesebloom-mark.svg" alt="" width={42} height={42} />
           <span>ChineseBloom</span>
         </Link>
         <nav className="header-links" aria-label="Main navigation">
-          <a href="#method">Method</a>
+          <a href="#method">How it works</a>
           <Link href="/free-lesson">Free lesson</Link>
-          <Button asChild className="header-cta"><Link href="/free-lesson">Start free lesson</Link></Button>
+          <Button asChild className="header-cta"><Link href="/free-lesson">Start the free lesson</Link></Button>
         </nav>
       </header>
 
       <section className="hero">
-        <div className="hero-inner shell">
+        <div className="hero-inner">
           <div className="hero-copy">
             <p className="eyebrow">MANDARIN LISTENING &amp; SPEAKING PRACTICE · HSK 3–4</p>
             <h1>Understand Mandarin.<em>Speak it naturally.</em></h1>
             <p className="hero-lead">
-              Build real listening and speaking confidence with one focused
-              20-minute conversation. Listen, dictate, shadow, and retell.
+              One natural conversation. Four focused steps. Twenty minutes.
             </p>
             <div className="hero-actions">
               <Button asChild size="lg" className="primary-cta">
                 <Link href="/free-lesson">Start the free lesson <ArrowRight aria-hidden="true" /></Link>
               </Button>
-              <span className="micro-proof"><Check aria-hidden="true" /> No sign-up required</span>
+              <span className="micro-proof"><Check aria-hidden="true" /> No account needed</span>
             </div>
-            <p className="hero-details">HSK 3–4 · About 20 minutes · Works in your browser</p>
+            <div className="hero-method-steps" aria-label="ChineseBloom training method">
+              {method.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div className="hero-method-step-wrap" key={item.number}>
+                    <a className={index === 0 ? "hero-method-step is-current" : "hero-method-step"} href="#method" aria-current={index === 0 ? "step" : undefined}>
+                      <span><Icon aria-hidden="true" /></span>
+                      <strong>{item.title}</strong>
+                    </a>
+                    {index < method.length - 1 ? <ArrowRight className="hero-step-arrow" aria-hidden="true" /> : null}
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           <div className="hero-visual">
@@ -68,15 +80,15 @@ export default function Home() {
       <section className="transformation shell" aria-labelledby="transformation-title">
         <h2 className="sr-only" id="transformation-title">From understanding to responding</h2>
         <article>
-          <p className="section-kicker">BEFORE</p>
-          <h3>I understand the words.</h3>
-          <p>But I still hesitate when it&apos;s my turn to speak.</p>
+          <p className="section-kicker">FROM</p>
+          <h3>Understanding every word</h3>
+          <p>Knowing what was said, but hesitating when it&apos;s your turn.</p>
         </article>
         <ArrowRight className="transformation-arrow" aria-hidden="true" />
         <article className="after-card">
-          <p className="section-kicker">AFTER</p>
-          <h3>I can respond in the moment.</h3>
-          <p>With clearer listening and more natural expression.</p>
+          <p className="section-kicker">TO</p>
+          <h3>Responding in the moment</h3>
+          <p>Hearing the meaning and answering with natural expression.</p>
         </article>
       </section>
 
@@ -119,7 +131,7 @@ export default function Home() {
       <footer className="site-footer shell">
         <div>
           <Link className="brand" href="/">
-            <Image className="brand-mark-image" src="/chinesebloom-mark.svg" alt="" width={34} height={34} />
+            <Image className="brand-mark-image" src="/chinesebloom-mark.svg" alt="" width={38} height={38} />
             <span>ChineseBloom</span>
           </Link>
           <p>Mandarin listening and speaking practice for intermediate learners.</p>
