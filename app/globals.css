@@ -981,7 +981,7 @@ body { background: var(--paper); color: var(--ink); }
 }
 
 @media (max-width: 680px) {
-  body { padding-bottom: 76px; }
+  body:has(.mobile-conversion-bar) { padding-bottom: 76px; }
   .shell { width: min(100% - 32px, 1200px); }
   .site-header { height: 68px; padding-inline: 16px; }
   .brand { font-size: 21px; }
@@ -1025,4 +1025,86 @@ body { background: var(--paper); color: var(--ink); }
   .mobile-conversion-bar strong { color: var(--ink); font-size: 12px; }
   .mobile-conversion-bar small { color: var(--muted-ink); font-size: 10px; }
   .mobile-conversion-bar .header-cta { min-height: 42px; }
+
+  /* Free lesson: compact mobile learning flow */
+  .lesson-page {
+    min-height: 100dvh;
+    background: var(--paper);
+  }
+  .lesson-header { height: 60px; }
+  .lesson-header-inner.shell { width: calc(100% - 28px); }
+  .lesson-header .brand { gap: 8px; font-size: 18px; }
+  .lesson-header .brand-mark-image { width: 28px; height: 28px; border-radius: 9px; }
+  .lesson-shell.shell {
+    width: calc(100% - 24px);
+    gap: 12px;
+    padding-block: 12px 28px;
+  }
+  .lesson-sidebar,
+  .lesson-workspace {
+    border-radius: 15px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(59, 50, 38, 0.06);
+  }
+  .lesson-sidebar { top: 10px; }
+  .lesson-label { font-size: 9px; letter-spacing: 0.1em; }
+  .lesson-sidebar h1 { margin: 7px 0 0; font-size: 23px; line-height: 1.2; }
+  .lesson-sidebar > p { display: none; }
+  .lesson-progress { height: 6px; margin: 14px 0 12px; }
+  .lesson-step-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 3px;
+    overflow: visible;
+  }
+  .lesson-step-button {
+    min-width: 0;
+    min-height: 52px;
+    gap: 4px;
+    padding: 5px 2px;
+    border-radius: 10px;
+    font-size: 10px;
+  }
+  .step-number { width: 23px; height: 23px; font-size: 10px; }
+  .lesson-workspace { min-height: 0; }
+  .lesson-stage-head { margin-bottom: 14px; }
+  .lesson-stage-head h2 { margin-top: 6px; font-size: 26px; line-height: 1.08; }
+  .practice-card { padding: 16px; border-radius: 14px; }
+  .audio-stage { min-height: 0; }
+  .audio-stage::after { width: 180px; height: 180px; right: -72px; bottom: -82px; }
+  .audio-stage h3 { margin: 13px 0 7px; font-size: 24px; line-height: 1.16; }
+  .audio-stage p { margin-block: 7px; font-size: 13px; line-height: 1.55; }
+  .audio-controls { gap: 8px; margin-top: 15px; }
+  .audio-controls button { min-height: 40px; padding-inline: 14px; font-size: 13px; }
+  .audio-stage .audio-controls > button:first-child { flex: 1 0 100%; }
+  .audio-controls select { min-height: 40px; padding-inline: 10px; font-size: 13px; }
+  .browser-note { margin-bottom: 0 !important; font-size: 10px !important; line-height: 1.45 !important; }
+  .instruction-list { gap: 8px; margin-top: 10px; }
+  .instruction-item { gap: 9px; padding: 11px; border-radius: 11px; font-size: 12px; line-height: 1.45; }
+  .instruction-item span { width: 23px; height: 23px; font-size: 10px; }
+  .practice-textarea { min-height: 150px; padding: 14px; font-size: 15px; line-height: 1.65; }
+  .dictation-actions { margin-top: 12px; }
+  .feedback-box { grid-template-columns: 54px 1fr; gap: 12px; padding: 14px; }
+  .score-ring { width: 54px; height: 54px; font-size: 15px; }
+  .reference-transcript { padding: 14px; font-size: 14px; line-height: 1.75; }
+  .shadow-tip { margin-bottom: 10px; padding: 11px 12px; font-size: 12px; }
+  .transcript-tabs [data-slot="tabs-trigger"] { min-height: 36px; padding-inline: 11px; font-size: 11px; }
+  .transcript-list { gap: 3px; margin-top: 10px; }
+  .transcript-line { grid-template-columns: 42px 1fr 32px; gap: 7px; padding: 9px 4px; }
+  .line-copy { font-size: 14px; line-height: 1.55; }
+  .line-copy.pinyin,
+  .line-copy.english { font-size: 12px; }
+  .line-play { width: 30px; height: 30px; }
+  .retell-prompts { gap: 8px; }
+  .retell-prompt { padding: 12px; }
+  .timer-card { gap: 12px; padding: 14px; }
+  .timer-card strong { font-size: 27px; }
+  .complete-card { gap: 12px; padding: 14px; }
+  .lesson-actions {
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 14px;
+  }
+  .lesson-actions button { min-height: 42px; padding-inline: 10px; font-size: 12px; }
 }

@@ -88,3 +88,13 @@ test("uses the flower brand mark instead of a Chinese character glyph", async ()
   assert.match(mark, /ChineseBloom flower mark/);
   assert.doesNotMatch(page + lesson, />中</);
 });
+
+test("uses a compact mobile layout for every free-lesson round", async () => {
+  const css = await read("app/globals.css");
+  assert.match(css, /lesson-shell\.shell[\s\S]*gap: 12px/);
+  assert.match(css, /lesson-step-list[\s\S]*repeat\(4, minmax\(0, 1fr\)\)/);
+  assert.match(css, /lesson-stage-head h2[\s\S]*font-size: 26px/);
+  assert.match(css, /practice-textarea[\s\S]*min-height: 150px/);
+  assert.match(css, /lesson-actions[\s\S]*grid-template-columns: 0\.82fr 1\.18fr/);
+  assert.match(css, /body:has\(\.mobile-conversion-bar\)/);
+});
