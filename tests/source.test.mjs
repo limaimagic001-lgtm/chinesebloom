@@ -64,20 +64,23 @@ test("targets the selected Mandarin listening and speaking search intent", async
   assert.match(layout, /Mandarin Listening & Speaking Practice for Intermediate Learners/);
   assert.match(page, /MANDARIN LISTENING &amp; SPEAKING PRACTICE/);
   assert.match(page, /HSK 3–4/);
-  assert.match(page, /Listen, dictate, shadow, and retell/);
+  assert.match(page, /One natural conversation\. Four focused steps\. Twenty minutes\./);
+  for (const step of ["Listen", "Dictate", "Shadow", "Retell"]) {
+    assert.match(page, new RegExp(step));
+  }
 });
 
 test("keeps the free-lesson conversion path immediate and low-friction", async () => {
   const page = await read("app/page.tsx");
   const player = await read("components/phrase-player.tsx");
   assert.match(page, /Start the free lesson/);
-  assert.match(page, /No sign-up required/);
+  assert.match(page, /No account needed/);
   assert.match(page, /mobile-conversion-bar/);
   assert.match(player, /SpeechSynthesisUtterance/);
   assert.match(player, /Play Mandarin phrase/);
 });
 
-test("uses the flower brand mark instead of a Chinese character glyph", async () => {
+test("uses the selected four-step brand mark instead of a Chinese character glyph", async () => {
   const page = await read("app/page.tsx");
   const lesson = await read("app/free-lesson/page.tsx");
   const layout = await read("app/layout.tsx");
@@ -85,8 +88,21 @@ test("uses the flower brand mark instead of a Chinese character glyph", async ()
   assert.match(page, /chinesebloom-mark\.svg/);
   assert.match(lesson, /chinesebloom-mark\.svg/);
   assert.match(layout, /chinesebloom-mark\.svg/);
-  assert.match(mark, /ChineseBloom flower mark/);
+  assert.match(mark, /ChineseBloom four-step bloom mark/);
+  assert.match(mark, /data:image\/png;base64/);
   assert.doesNotMatch(page + lesson, />中</);
+});
+
+test("implements the selected option-three conversion hero", async () => {
+  const page = await read("app/page.tsx");
+  const player = await read("components/phrase-player.tsx");
+  assert.match(page, /className="home-page"/);
+  assert.match(page, /hero-method-steps/);
+  assert.match(page, /Understanding every word/);
+  assert.match(page, /Responding in the moment/);
+  assert.match(player, /Play the conversation/);
+  assert.match(player, /player-waveform/);
+  assert.match(player, /player-method/);
 });
 
 test("uses a compact mobile layout for every free-lesson round", async () => {
