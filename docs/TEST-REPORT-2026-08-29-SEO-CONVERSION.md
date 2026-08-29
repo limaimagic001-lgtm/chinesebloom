@@ -49,3 +49,20 @@ Expected server-rendered landing copy was found: `Understand Mandarin`, `Start t
 ## Visual verification status
 
 Automated visual comparison is blocked because the project instruction prohibits the cloud browser and no local Chromium runtime is available. A production screenshot from the user's Chrome is required for final pixel-level comparison. Build, source, and HTTP verification are complete.
+
+## GitHub and Vercel production verification
+
+- Source commit: `3cc30d5d1dee693ccec36f108536c2afa5e83c4a`
+- GitHub branch: `main`
+- Vercel status: **SUCCESS**
+- Production URL: `https://chinesebloom.vercel.app`
+
+| Production readback | Result |
+|---|---|
+| `/` | PASS — HTTP 200, expected SEO title and conversion copy |
+| `/free-lesson` | PASS — HTTP 200 |
+| `/robots.txt` | PASS — HTTP 200, text/plain |
+| `/sitemap.xml` | PASS — HTTP 200, application/xml |
+| `/chinesebloom-song-teahouse.webp` | PASS — HTTP 200, image/webp |
+| `/song-landscape.webp` | PASS — HTTP 200, image/webp |
+| HTTP 5xx | PASS — 0 |
