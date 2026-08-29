@@ -8,6 +8,7 @@ import {
   CirclePause,
   CirclePlay,
   Info,
+  LockKeyhole,
   Pause,
   Play,
   RotateCcw,
@@ -206,7 +207,9 @@ export function FreeLesson() {
               <span className="stage-time">About 4 minutes</span>
             </div>
             <div className="practice-card audio-stage">
-              <span className="lesson-label">Transcript hidden</span>
+              <span className="transcript-status">
+                <LockKeyhole aria-hidden="true" /> Transcript unlocks after dictation
+              </span>
               <h3>Focus on the situation, not every word.</h3>
               <p>Listen once for the main idea. Listen again and notice where one word seems to connect to the next.</p>
               <div className="audio-controls">
