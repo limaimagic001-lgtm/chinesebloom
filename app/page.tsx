@@ -24,7 +24,7 @@ export default function Home() {
     <main>
       <header className="site-header">
         <Link className="brand" href="/" aria-label="ChineseBloom home">
-          <Image className="brand-mark-image" src="/favicon.svg" alt="" width={36} height={36} />
+          <Image className="brand-mark-image" src="/chinesebloom-mark.svg" alt="" width={36} height={36} />
           <span>ChineseBloom</span>
         </Link>
         <nav className="header-links" aria-label="Main navigation">
@@ -119,7 +119,7 @@ export default function Home() {
       <footer className="site-footer shell">
         <div>
           <Link className="brand" href="/">
-            <Image className="brand-mark-image" src="/favicon.svg" alt="" width={34} height={34} />
+            <Image className="brand-mark-image" src="/chinesebloom-mark.svg" alt="" width={34} height={34} />
             <span>ChineseBloom</span>
           </Link>
           <p>Mandarin listening and speaking practice for intermediate learners.</p>

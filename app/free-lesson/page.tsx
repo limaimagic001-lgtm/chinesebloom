@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { FreeLesson } from "@/components/free-lesson";
@@ -16,7 +17,7 @@ export default function FreeLessonPage() {
       <header className="lesson-header">
         <div className="lesson-header-inner shell">
           <Link className="brand" href="/" aria-label="ChineseBloom home">
-            <span className="lesson-brand-mark" aria-hidden="true">中</span>
+            <Image className="brand-mark-image" src="/chinesebloom-mark.svg" alt="" width={34} height={34} />
             <span>ChineseBloom</span>
           </Link>
           <Link href="/">← Back to the overview</Link>

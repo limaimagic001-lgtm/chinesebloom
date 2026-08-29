@@ -76,3 +76,15 @@ test("keeps the free-lesson conversion path immediate and low-friction", async (
   assert.match(player, /SpeechSynthesisUtterance/);
   assert.match(player, /Play Mandarin phrase/);
 });
+
+test("uses the flower brand mark instead of a Chinese character glyph", async () => {
+  const page = await read("app/page.tsx");
+  const lesson = await read("app/free-lesson/page.tsx");
+  const layout = await read("app/layout.tsx");
+  const mark = await read("public/chinesebloom-mark.svg");
+  assert.match(page, /chinesebloom-mark\.svg/);
+  assert.match(lesson, /chinesebloom-mark\.svg/);
+  assert.match(layout, /chinesebloom-mark\.svg/);
+  assert.match(mark, /ChineseBloom flower mark/);
+  assert.doesNotMatch(page + lesson, />中</);
+});

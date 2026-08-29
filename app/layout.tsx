@@ -25,8 +25,9 @@ export const metadata: Metadata = {
       "Turn Mandarin you understand into natural speech with a free 20-minute lesson.",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/chinesebloom-mark.svg",
+    shortcut: "/chinesebloom-mark.svg",
+    apple: "/chinesebloom-mark.svg",
   },
 };
 
