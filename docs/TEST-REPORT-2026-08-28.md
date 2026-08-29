@@ -75,4 +75,22 @@ Audio uses the Mandarin speech voice available in the learner's browser. Voice c
 
 ## Deployment verification
 
-Pending final production deployment and remote health verification.
+- Vercel project: `chinesebloom`
+- GitHub source: `limaimagic001-lgtm/chinesebloom`, branch `main`
+- Production source commit: `5b4b4c5cbf4e29fbe7f226a68ba8e31656aa9e91`
+- Vercel deployment status reported to GitHub: **SUCCESS**
+- Production URL: `https://chinesebloom.vercel.app`
+
+| Production readback | Result |
+|---|---|
+| `/` | PASS — HTTP 200, expected title, canonical and CTA |
+| `/free-lesson` | PASS — HTTP 200, expected lesson title and dialogue |
+| `/robots.txt` | PASS — HTTP 200, crawler access allowed |
+| `/sitemap.xml` | PASS — HTTP 200, both public URLs present |
+| `/chinesebloom-conversation.png` | PASS — HTTP 200, valid PNG response |
+| `/favicon.svg` | PASS — HTTP 200, valid SVG response |
+| HTTP 5xx during production readback | PASS — 0 |
+
+The canonical, Open Graph, robots and sitemap URLs intentionally use
+`https://chinesebloom.com`. The custom domain still needs to be connected
+before search-engine submission.
