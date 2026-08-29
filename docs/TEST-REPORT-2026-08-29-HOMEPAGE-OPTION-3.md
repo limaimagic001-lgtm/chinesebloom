@@ -11,6 +11,7 @@
 - TypeScript / Next.js production build: **PASS**
 - Static route generation: **PASS**
 - Local production HTTP readback: **PASS**
+- Vercel Production HTTP readback: **PASS**
 - Browser visual comparison: **PENDING USER CHROME SCREENSHOTS**
 
 ## Test Cases
@@ -30,8 +31,11 @@
 | HP-11 | Verify local lesson HTTP | `/free-lesson` returns 200 | PASS |
 | HP-12 | Verify logo HTTP | `/chinesebloom-mark.svg` returns 200 | PASS |
 | HP-13 | Verify Wavuno isolation | No Wavuno, Stripe, Supabase, or Wavuno GA identifiers introduced | PASS |
-| HP-14 | Desktop visual comparison | Match 1536 × 960 selected reference | PENDING |
-| HP-15 | Mobile visual comparison | No overflow; CTA, steps, and audio card remain readable | PENDING |
+| HP-14 | Verify Production homepage | `https://chinesebloom.vercel.app/` returns 200 with approved Option 3 strings | PASS |
+| HP-15 | Verify Production lesson | `/free-lesson` returns 200 | PASS |
+| HP-16 | Verify Production logo | `/chinesebloom-mark.svg` returns 200 with the selected logo asset | PASS |
+| HP-17 | Desktop visual comparison | Match 1536 × 960 selected reference | PENDING |
+| HP-18 | Mobile visual comparison | No overflow; CTA, steps, and audio card remain readable | PENDING |
 
 ## Local HTTP Evidence
 
@@ -39,6 +43,16 @@
 - Free lesson: HTTP 200, 26,746 bytes
 - Logo: HTTP 200, generated transparent mark embedded in SVG
 - Verified strings: `Understand Mandarin.`, `Speak it naturally.`, `Start the free lesson`, `No account needed`, `Play the conversation`, `Listen`, `Dictate`, `Shadow`, `Retell`
+
+## Production Evidence
+
+- Production homepage: HTTP 200, 40,421 bytes
+- Production free lesson: HTTP 200, 26,573 bytes
+- Production logo: HTTP 200, 81,639 bytes
+- Verified approved copy: `Speak it naturally.`, `One natural conversation. Four focused steps. Twenty minutes.`, `Understanding every word`, `Responding in the moment`
+- Verified generated logo marker: `ChineseBloom four-step bloom mark`
+- GitHub main head for this iteration: `d509ec64f0ba4addeeb5445589d083d1303c89f0`
+- Vercel runtime-error aggregation was unavailable because the connected Vercel project list did not expose `chinesebloom`; the three public production routes above were checked directly and returned no HTTP 5xx.
 
 ## Known Verification Boundary
 
