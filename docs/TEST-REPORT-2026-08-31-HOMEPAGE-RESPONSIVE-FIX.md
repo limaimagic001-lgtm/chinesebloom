@@ -12,6 +12,7 @@
 - Next.js production build and TypeScript: **PASS**
 - Automated source tests: **12/12 PASS**
 - Static route generation: **PASS**
+- Vercel Production HTTP/CSS readback: **PASS**
 - Post-deploy desktop/mobile visual comparison: **PENDING USER CHROME SCREENSHOTS**
 
 ## Test Cases
@@ -27,11 +28,21 @@
 | RF-07 | Run Next.js production build | Compile and type-check successfully | PASS |
 | RF-08 | Run automated source tests | All 12 tests pass, including the new hero-grid regression test | PASS |
 | RF-09 | Generate public routes | `/`, `/free-lesson`, `robots.txt`, and `sitemap.xml` remain static | PASS |
-| RF-10 | Recheck production desktop/mobile rendering | No desktop clipping/blank half; no mobile CTA overlap | PENDING |
+| RF-10 | Read back deployed CSS | Full-width hero override, stable desktop padding, and mobile CTA clearance are present | PASS |
+| RF-11 | Recheck production desktop/mobile rendering | No desktop clipping/blank half; no mobile CTA overlap | PENDING |
 
 ## Change Boundary
 
 Only homepage CSS and its regression test were changed. Landing-page copy, imagery, free-lesson behavior, authentication/payment isolation, and Wavuno were not modified.
+
+## Production Evidence
+
+- `https://chinesebloom.vercel.app/`: HTTP 200, 40,421 bytes
+- `https://chinesebloom.vercel.app/free-lesson`: HTTP 200, 26,573 bytes
+- Production CSS: HTTP 200, 55,936 bytes
+- Verified rules: full-width block hero, symmetric clamped desktop copy padding, and 104px mobile CTA clearance
+- GitHub implementation commit: `93fc91de2b560d3ea5fa8cb61bd7c9fdf7bca28e`
+- Iteration report head: `e2b482721bf4a64fa076f7e417cf8bfe056b060c`
 
 ## Visual Verification Boundary
 
