@@ -1,0 +1,25 @@
+# ChineseBloom Copy Accuracy Fix Test Report
+
+- Date: 2026-08-31
+- Scope: remove the unsupported native/unscripted conversation claim from the Listen method card
+- Change boundary: one homepage sentence and its regression assertions
+
+## Result
+
+- ESLint: **PASS**
+- Next.js production build and TypeScript: **PASS**
+- Automated source tests: **12/12 PASS**
+- Unsupported-claim scan: **PASS**
+- Vercel Production readback: **PENDING**
+
+## Test Cases
+
+| ID | Test case | Expected result | Result |
+| --- | --- | --- | --- |
+| CA-01 | Verify Listen card copy | Uses “natural Mandarin in context” | PASS |
+| CA-02 | Scan unsupported claims | No `real, unscripted native conversations`, `native audio`, or `real-time speaking prompts` | PASS |
+| CA-03 | Run ESLint | No lint errors | PASS |
+| CA-04 | Run Next.js build | Compile and type-check successfully | PASS |
+| CA-05 | Run automated tests | All regression tests pass | PASS |
+| CA-06 | Verify project isolation | No Wavuno service identifiers introduced | PASS |
+| CA-07 | Read back Vercel Production | Safe Listen copy is live and unsupported claims are absent | PENDING |
