@@ -13,7 +13,7 @@ import { PhrasePlayer } from "@/components/phrase-player";
 import { Button } from "@/components/ui/button";
 
 const method = [
-  { number: "01", title: "Listen", indicator: "Tune your ear", lead: "Listen raw.", copy: "Train your ears on real, unscripted native conversations—no text safety net.", icon: Ear },
+  { number: "01", title: "Listen", indicator: "Tune your ear", lead: "Listen raw.", copy: "Train your ears on natural Mandarin in context—no text safety net.", icon: Ear },
   { number: "02", title: "Dictate", indicator: "Catch the gaps", lead: "Catch the gaps.", copy: "Write what you hear to instantly spot connected speech and blurred sounds.", icon: PencilLine },
   { number: "03", title: "Shadow", indicator: "Match the flow", lead: "Match the rhythm.", copy: "Mimic line-by-line tones, pitch, and cadence until it flows effortlessly.", icon: Mic2 },
   { number: "04", title: "Retell", indicator: "Make it yours", lead: "Speak freely.", copy: "Ditch the script and express the story using your own natural vocabulary.", icon: MessageCircleMore },
