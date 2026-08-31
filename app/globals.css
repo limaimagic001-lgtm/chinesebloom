@@ -134,7 +134,7 @@
   display: grid;
   justify-items: center;
   gap: 8px;
-  min-width: 64px;
+  min-width: 76px;
   color: var(--ink);
   font-size: 12px;
   text-decoration: none;
@@ -164,6 +164,13 @@
   font-weight: 650;
 }
 
+.home-page .hero-method-step small {
+  color: var(--muted-ink);
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 .home-page .hero-method-step.is-current {
   color: var(--cinnabar);
 }
@@ -175,6 +182,10 @@
 
 .home-page .hero-method-step.is-current strong {
   font-weight: 800;
+}
+
+.home-page .hero-method-step.is-current small {
+  color: var(--cinnabar-dark);
 }
 
 .home-page .hero-step-arrow {
@@ -420,6 +431,12 @@
   .home-page .hero-method-step {
     min-width: 53px;
     font-size: 10px;
+  }
+
+  .home-page .hero-method-step small {
+    max-width: 58px;
+    font-size: 8px;
+    white-space: normal;
   }
 
   .home-page .hero-method-step > span {
@@ -1400,6 +1417,7 @@ body { background: var(--paper); color: var(--ink); }
   align-items: center;
   padding-block: 82px;
 }
+.transformation-kicker { grid-column: 1 / -1; justify-content: center; margin: 0; }
 .transformation article { max-width: 420px; }
 .transformation article:first-of-type { justify-self: end; }
 .transformation h3 { margin: 14px 0 15px; font-family: ui-serif, Georgia, serif; font-size: clamp(30px, 3vw, 42px); font-weight: 500; letter-spacing: -0.035em; }
@@ -1428,6 +1446,7 @@ body { background: var(--paper); color: var(--ink); }
 .method-topline svg { width: 25px; }
 .method-card h3 { margin: 52px 0 11px; color: var(--ink); font-family: ui-serif, Georgia, serif; font-size: 26px; font-weight: 500; }
 .method-card p { margin: 0; line-height: 1.65; }
+.method-card p strong { color: var(--ink); font-weight: 750; }
 .method-cta {
   display: grid;
   grid-template-columns: 1fr auto;
