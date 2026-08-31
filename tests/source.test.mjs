@@ -64,7 +64,7 @@ test("targets the selected Mandarin listening and speaking search intent", async
   assert.match(layout, /Mandarin Listening & Speaking Practice for Intermediate Learners/);
   assert.match(page, /MANDARIN LISTENING &amp; SPEAKING PRACTICE/);
   assert.match(page, /HSK 3–4/);
-  assert.match(page, /One conversation\. Four focused steps\. 20 minutes to fluency\./);
+  assert.match(page, /One conversation\. Four focused steps\. 20 minutes a day\./);
   for (const step of ["Listen", "Dictate", "Shadow", "Retell"]) {
     assert.match(page, new RegExp(step));
   }
@@ -102,8 +102,11 @@ test("implements the selected option-one messaging in the option-three layout", 
   assert.match(page, /Say it naturally\./);
   assert.match(page, /Stuck in your head/);
   assert.match(page, /Replying on reflex/);
-  assert.match(page, /Turn active listening into automatic speech\./);
-  assert.match(page, /Ready to speak Mandarin with confidence\?/);
+  assert.match(page, /From listening to native reflex\./);
+  assert.match(page, /Four guided steps to bridge the gap between understanding and speaking\./);
+  assert.match(page, /GET STARTED FOR FREE/);
+  assert.match(page, /Speak Mandarin naturally in your next conversation\./);
+  assert.match(page, /Mandarin audio, instant dictation feedback, and guided speaking prompts\./);
   for (const indicator of ["Tune your ear", "Catch the gaps", "Match the flow", "Make it yours"]) {
     assert.match(page, new RegExp(indicator));
   }
