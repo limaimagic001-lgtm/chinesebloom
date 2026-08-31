@@ -40,7 +40,7 @@ export default function Home() {
             <p className="eyebrow">MANDARIN LISTENING &amp; SPEAKING PRACTICE · HSK 3–4</p>
             <h1>Hear it clearly.<em>Say it naturally.</em></h1>
             <p className="hero-lead">
-              One conversation. Four focused steps. 20 minutes to fluency.
+              One conversation. Four focused steps. 20 minutes a day.
             </p>
             <div className="hero-actions">
               <Button asChild size="lg" className="primary-cta">
@@ -98,8 +98,8 @@ export default function Home() {
         <div className="shell method-content">
           <div className="section-heading">
             <p className="section-kicker">THE CHINESEBLOOM METHOD</p>
-            <h2>Turn active listening into automatic speech.</h2>
-            <p>Four deliberate steps designed to close the gap between listening and speaking.</p>
+            <h2>From listening to native reflex.</h2>
+            <p>Four guided steps to bridge the gap between understanding and speaking.</p>
           </div>
           <div className="method-grid">
             {method.map((item) => {
@@ -115,9 +115,9 @@ export default function Home() {
           </div>
           <div className="method-cta">
             <div>
-              <p className="section-kicker">FREE LESSON · WEEKEND PLANS</p>
-              <h2>Ready to speak Mandarin with confidence?</h2>
-              <p>Try our 20-minute lesson today. Includes native audio, interactive feedback, and full speaking practice.</p>
+              <p className="section-kicker">GET STARTED FOR FREE</p>
+              <h2>Speak Mandarin naturally in your next conversation.</h2>
+              <p>Take the 20-minute sample lesson. Includes Mandarin audio, instant dictation feedback, and guided speaking prompts.</p>
             </div>
             <div>
               <Button asChild size="lg" className="primary-cta">
