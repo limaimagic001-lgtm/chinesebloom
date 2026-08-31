@@ -23,11 +23,21 @@
   - Location: 375 × 667 mobile hero.
   - Fix: reserve 104px of bottom clearance in the mobile hero copy.
 
+**Post-copy desktop review received on 2026-08-31**
+
+- [Passed] Desktop structure and hierarchy are healthy across the hero, transformation, method, and bottom CTA sections.
+  - The earlier half-width clipping and right-side blank area are gone.
+  - The audio player does not cover either speaker's face.
+  - The four-step indicator and four method cards are aligned and readable.
+- [Passed with P3 note] The hero headline uses a three-line composition: “Hear it clearly.” followed by “Say it / naturally.” The wrap is balanced and does not require a layout change.
+- [Not site UI] The small blue square icons and blue subtitle highlight are browser extension/selection overlays; they do not appear in the ChineseBloom source.
+- [P1 content-truth risk] “real, unscripted native conversations” and “native audio” imply recorded native-speaker material, while the current free lesson uses browser Mandarin speech synthesis. Replace those claims or add recorded native audio before paid acquisition.
+
 - [Blocked] Browser-rendered comparison is unavailable.
   - Location: homepage full view and responsive states.
-  - Evidence: pre-fix user Chrome screenshots were received and inspected, but post-fix screenshots have not been received yet.
-  - Impact: typography, image crop, exact spacing, responsive wrapping, hover/focus appearance, and transparency halos cannot be visually certified from code/build output alone.
-  - Fix: after production deployment, capture desktop and mobile screenshots in the user's Chrome and compare them with the source visual.
+  - Evidence: post-fix desktop screenshots were received and inspected, but no post-copy mobile screenshot has been received.
+  - Impact: the 375–390px headline, four-step microcopy, sticky CTA clearance, and mobile audio-card crop cannot yet be certified.
+  - Fix: capture one mobile screenshot in the user's Chrome after a hard refresh.
 
 **Static Fidelity Review**
 
@@ -49,8 +59,8 @@
 **Implementation Checklist**
 
 1. ~~Deploy the tested commit to Vercel Production.~~ Completed and read back successfully.
-2. Capture desktop and mobile production screenshots in the user's Chrome.
-3. Compare the same viewport/state with the selected source visual.
+2. ~~Capture desktop production screenshots in the user's Chrome.~~ Completed and passed.
+3. Capture one mobile production screenshot and compare the same viewport/state.
 4. Fix any P0/P1/P2 differences and update this report to `passed`.
 
 **Follow-up Polish**
