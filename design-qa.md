@@ -57,5 +57,6 @@
 
 - Confirm the four-arc mark remains crisp at 24–42 px.
 - Confirm the mobile audio card does not obscure either speaker's face.
+- Confirm the Option 1 microcopy does not create undesirable wrapping in the desktop four-step indicator or the 375px mobile hero.
 
 final result: blocked
