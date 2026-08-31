@@ -375,10 +375,25 @@
   }
 
   .home-page .header-links {
-    gap: 0;
+    gap: 14px;
   }
 
+  /* The free-lesson entry point must stay reachable from the phone
+     header; before this it was hidden with no menu to replace it. */
   .home-page .header-links > a:not(.header-cta) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 2px;
+    color: var(--jade);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  /* The in-page anchor stays hidden to save room. Declared after the rule
+     above because both selectors have the same specificity. */
+  .home-page .header-links > a[href="#method"] {
     display: none;
   }
 
@@ -388,9 +403,12 @@
     font-size: 11px;
   }
 
+  /* `body:has(.mobile-conversion-bar)` already reserves 76px at the page
+     foot for the sticky bar, so the extra 104px here only produced a dead
+     gap between the four-step row and the hero photo. */
   .home-page .hero-copy {
     width: calc(100% - 32px);
-    padding: 45px 0 104px;
+    padding: 45px 0 36px;
   }
 
   .home-page .eyebrow {
@@ -417,40 +435,56 @@
     width: 100%;
   }
 
+  /* Two-by-two on phones. A single row forced 8px microcopy and clipped
+     the fourth step against the right edge at 375px. */
   .home-page .hero-method-steps {
-    justify-content: space-between;
-    gap: 3px;
-    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+    align-items: stretch;
+    margin-top: 26px;
   }
 
   .home-page .hero-method-step-wrap {
     min-width: 0;
-    gap: 2px;
+    gap: 0;
   }
 
   .home-page .hero-method-step {
-    min-width: 53px;
-    font-size: 10px;
-  }
-
-  .home-page .hero-method-step small {
-    max-width: 58px;
-    font-size: 8px;
-    white-space: normal;
+    grid-template-columns: 40px minmax(0, 1fr);
+    justify-items: start;
+    align-items: center;
+    gap: 2px 10px;
+    width: 100%;
+    min-width: 0;
+    font-size: 12px;
+    text-align: left;
   }
 
   .home-page .hero-method-step > span {
+    grid-row: span 2;
     width: 40px;
     height: 40px;
+  }
+
+  .home-page .hero-method-step strong {
+    align-self: end;
+  }
+
+  .home-page .hero-method-step small {
+    align-self: start;
+    max-width: none;
+    font-size: 10px;
+    white-space: normal;
   }
 
   .home-page .hero-method-step > span svg {
     width: 18px;
   }
 
+  /* The between-step arrows carry no meaning once the row becomes a grid. */
   .home-page .hero-step-arrow {
-    width: 12px;
-    margin-top: 13px;
+    display: none;
   }
 
   .home-page .hero-visual {
@@ -1604,4 +1638,86 @@ body { background: var(--paper); color: var(--ink); }
     padding-top: 14px;
   }
   .lesson-actions button { min-height: 42px; padding-inline: 10px; font-size: 12px; }
+}
+
+/* ------------------------------------------------------------------ */
+/* UI polish branch: interaction feedback and headline wrapping only.  */
+/* No brand colours, copy, routes, audio or lesson logic are touched.  */
+/* ------------------------------------------------------------------ */
+
+/* Keyboard focus was only visible on the two CTA buttons. Every
+   interactive element on the homepage and the lesson page now shows a
+   ring, which is also what screen-reader and keyboard users rely on. */
+.home-page a:focus-visible,
+.home-page button:focus-visible,
+.lesson-page a:focus-visible,
+.lesson-page button:focus-visible,
+.lesson-page select:focus-visible,
+.lesson-page textarea:focus-visible {
+  outline: 3px solid rgba(201, 76, 53, 0.45);
+  outline-offset: 3px;
+}
+
+/* Pressed state, so a tap is acknowledged on touch devices where there
+   is no hover to fall back on. */
+.header-cta:active,
+.primary-cta:active,
+.audio-controls button:active,
+.lesson-actions button:active,
+.dictation-actions button:active,
+.retell-actions button:active {
+  transform: translateY(1px);
+}
+
+/* The four method cards were the only clickable-looking blocks with no
+   pointer feedback at all. */
+.method-card {
+  transition: background 160ms ease;
+}
+
+@media (hover: hover) {
+  .method-card:hover {
+    background: rgba(255, 254, 250, 0.72);
+  }
+
+  .site-footer a:hover,
+  .lesson-header a:hover,
+  .home-page .header-links > a:not(.header-cta):hover {
+    color: var(--cinnabar);
+  }
+}
+
+/* Balanced wrapping stops single-word orphan lines such as the
+   "word." that fell alone under the lesson audio card headline. */
+.home-page .hero h1,
+.method-cta h2,
+.section-heading h2,
+.lesson-stage-head h2,
+.audio-stage h3 {
+  text-wrap: balance;
+}
+
+.method-cta h2 {
+  line-height: 1.14;
+}
+
+/* "No account needed. Start in 10 / seconds." broke mid-sentence next to
+   the desktop CTA; balancing splits it between the two sentences. */
+.home-page .micro-proof {
+  text-wrap: balance;
+}
+
+/* The green audio card is roughly 810px wide at 1536px; the 460px cap
+   was narrower than the card and caused the ragged two-line wrap. */
+.audio-stage h3 {
+  max-width: 620px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .method-card,
+  .header-cta,
+  .primary-cta,
+  .audio-controls button {
+    transform: none !important;
+  }
 }
