@@ -7,13 +7,25 @@
 - Intended desktop viewport: 1536 × 960 CSS px at density 1
 - Intended mobile breakpoint: 390 × 844 CSS px at density 1
 - State: default homepage, audio preview idle
-- Implementation screenshot: unavailable
+- Implementation screenshots received from the user's Chrome: desktop 1848 × 955 and mobile 375 × 667
 
-**Findings**
+**Findings from the 2026-08-31 Chrome screenshots**
+
+- [P0 fixed in code] The desktop hero was constrained to the left half of the viewport.
+  - Location: desktop homepage hero.
+  - Evidence: the 1848 × 955 screenshot showed the headline and image clipped at approximately x=936 with blank space to the right.
+  - Cause: the legacy `.hero` two-column grid wrapped the new `.hero-inner` two-column grid.
+  - Fix: `.home-page .hero` now explicitly uses `display: block`, full width, and zero padding.
+- [P1 fixed in code] The desktop copy column inherited viewport-relative left padding after centering the hero container.
+  - Location: desktop headline and supporting copy.
+  - Fix: use symmetric clamped internal padding so the title has a stable readable width.
+- [P1 fixed in code] The mobile sticky conversion bar covered the top of the four-step row.
+  - Location: 375 × 667 mobile hero.
+  - Fix: reserve 104px of bottom clearance in the mobile hero copy.
 
 - [Blocked] Browser-rendered comparison is unavailable.
   - Location: homepage full view and responsive states.
-  - Evidence: the source image is available, but the user explicitly requires that no cloud browser be used and no user-supplied Chrome screenshot of the implementation has been received yet.
+  - Evidence: pre-fix user Chrome screenshots were received and inspected, but post-fix screenshots have not been received yet.
   - Impact: typography, image crop, exact spacing, responsive wrapping, hover/focus appearance, and transparency halos cannot be visually certified from code/build output alone.
   - Fix: after production deployment, capture desktop and mobile screenshots in the user's Chrome and compare them with the source visual.
 
