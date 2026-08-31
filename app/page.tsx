@@ -13,10 +13,10 @@ import { PhrasePlayer } from "@/components/phrase-player";
 import { Button } from "@/components/ui/button";
 
 const method = [
-  { number: "01", title: "Listen", copy: "Hear one natural conversation in context. No transcript yet.", icon: Ear },
-  { number: "02", title: "Dictate", copy: "Write what you hear and notice exactly where speech blurred.", icon: PencilLine },
-  { number: "03", title: "Shadow", copy: "Copy the tones, rhythm, and connected speech line by line.", icon: Mic2 },
-  { number: "04", title: "Retell", copy: "Put the transcript away and express the idea in your own words.", icon: MessageCircleMore },
+  { number: "01", title: "Listen", indicator: "Tune your ear", lead: "Listen raw.", copy: "Train your ears on real, unscripted native conversations—no text safety net.", icon: Ear },
+  { number: "02", title: "Dictate", indicator: "Catch the gaps", lead: "Catch the gaps.", copy: "Write what you hear to instantly spot connected speech and blurred sounds.", icon: PencilLine },
+  { number: "03", title: "Shadow", indicator: "Match the flow", lead: "Match the rhythm.", copy: "Mimic line-by-line tones, pitch, and cadence until it flows effortlessly.", icon: Mic2 },
+  { number: "04", title: "Retell", indicator: "Make it yours", lead: "Speak freely.", copy: "Ditch the script and express the story using your own natural vocabulary.", icon: MessageCircleMore },
 ];
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
         <nav className="header-links" aria-label="Main navigation">
           <a href="#method">How it works</a>
           <Link href="/free-lesson">Free lesson</Link>
-          <Button asChild className="header-cta"><Link href="/free-lesson">Start the free lesson</Link></Button>
+          <Button asChild className="header-cta"><Link href="/free-lesson">Start Free Lesson</Link></Button>
         </nav>
       </header>
 
@@ -38,15 +38,15 @@ export default function Home() {
         <div className="hero-inner">
           <div className="hero-copy">
             <p className="eyebrow">MANDARIN LISTENING &amp; SPEAKING PRACTICE · HSK 3–4</p>
-            <h1>Understand Mandarin.<em>Speak it naturally.</em></h1>
+            <h1>Hear it clearly.<em>Say it naturally.</em></h1>
             <p className="hero-lead">
-              One natural conversation. Four focused steps. Twenty minutes.
+              One conversation. Four focused steps. 20 minutes to fluency.
             </p>
             <div className="hero-actions">
               <Button asChild size="lg" className="primary-cta">
-                <Link href="/free-lesson">Start the free lesson <ArrowRight aria-hidden="true" /></Link>
+                <Link href="/free-lesson">Start Free Lesson <ArrowRight aria-hidden="true" /></Link>
               </Button>
-              <span className="micro-proof"><Check aria-hidden="true" /> No account needed</span>
+              <span className="micro-proof"><Check aria-hidden="true" /> No account needed. Start in 10 seconds.</span>
             </div>
             <div className="hero-method-steps" aria-label="ChineseBloom training method">
               {method.map((item, index) => {
@@ -56,6 +56,7 @@ export default function Home() {
                     <a className={index === 0 ? "hero-method-step is-current" : "hero-method-step"} href="#method" aria-current={index === 0 ? "step" : undefined}>
                       <span><Icon aria-hidden="true" /></span>
                       <strong>{item.title}</strong>
+                      <small>{item.indicator}</small>
                     </a>
                     {index < method.length - 1 ? <ArrowRight className="hero-step-arrow" aria-hidden="true" /> : null}
                   </div>
@@ -78,17 +79,17 @@ export default function Home() {
       </section>
 
       <section className="transformation shell" aria-labelledby="transformation-title">
-        <h2 className="sr-only" id="transformation-title">From understanding to responding</h2>
+        <h2 className="section-kicker transformation-kicker" id="transformation-title">FROM UNDERSTANDING TO RESPONDING</h2>
         <article>
           <p className="section-kicker">FROM</p>
-          <h3>Understanding every word</h3>
-          <p>Knowing what was said, but hesitating when it&apos;s your turn.</p>
+          <h3>Stuck in your head</h3>
+          <p>You get every word, but freeze the moment you try to answer.</p>
         </article>
         <ArrowRight className="transformation-arrow" aria-hidden="true" />
         <article className="after-card">
           <p className="section-kicker">TO</p>
-          <h3>Responding in the moment</h3>
-          <p>Hearing the meaning and answering with natural expression.</p>
+          <h3>Replying on reflex</h3>
+          <p>You hear the tone, catch the meaning, and answer without hesitation.</p>
         </article>
       </section>
 
@@ -97,8 +98,8 @@ export default function Home() {
         <div className="shell method-content">
           <div className="section-heading">
             <p className="section-kicker">THE CHINESEBLOOM METHOD</p>
-            <h2>One conversation. Four focused steps.</h2>
-            <p>Listen closely, write what you hear, shadow the rhythm, then retell it in your own words.</p>
+            <h2>Turn active listening into automatic speech.</h2>
+            <p>Four deliberate steps designed to close the gap between listening and speaking.</p>
           </div>
           <div className="method-grid">
             {method.map((item) => {
@@ -107,7 +108,7 @@ export default function Home() {
                 <article className="method-card" key={item.number}>
                   <div className="method-topline"><span>{item.number}</span><Icon aria-hidden="true" /></div>
                   <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
+                  <p><strong>{item.lead}</strong> {item.copy}</p>
                 </article>
               );
             })}
@@ -115,14 +116,14 @@ export default function Home() {
           <div className="method-cta">
             <div>
               <p className="section-kicker">FREE LESSON · WEEKEND PLANS</p>
-              <h2>Turn understanding into natural expression.</h2>
-              <p>Start with a complete HSK 3–4 lesson—audio, transcript, pinyin, feedback, and speaking practice included.</p>
+              <h2>Ready to speak Mandarin with confidence?</h2>
+              <p>Try our 20-minute lesson today. Includes native audio, interactive feedback, and full speaking practice.</p>
             </div>
             <div>
               <Button asChild size="lg" className="primary-cta">
-                <Link href="/free-lesson">Try the free 20-minute lesson <ArrowRight aria-hidden="true" /></Link>
+                <Link href="/free-lesson">Try the Free Lesson Now <ArrowRight aria-hidden="true" /></Link>
               </Button>
-              <span>No account. No card. Start immediately.</span>
+              <span>No credit card. No sign-up required.</span>
             </div>
           </div>
         </div>
