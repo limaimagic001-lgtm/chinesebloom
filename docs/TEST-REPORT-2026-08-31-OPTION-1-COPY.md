@@ -11,7 +11,7 @@
 - Automated source tests: **12/12 PASS**
 - Static route generation: **PASS**
 - ChineseBloom/Wavuno isolation: **PASS**
-- Vercel Production readback: **PENDING DEPLOYMENT**
+- Vercel Production readback: **PASS**
 - User Chrome visual verification: **PENDING**
 
 ## Test Cases
@@ -30,7 +30,7 @@
 | CP-10 | Run automated source tests | All 12 tests pass | PASS |
 | CP-11 | Generate static routes | `/`, `/free-lesson`, `robots.txt`, and `sitemap.xml` remain static | PASS |
 | CP-12 | Verify project isolation | No Wavuno, Stripe, Supabase, or Wavuno GA identifiers introduced | PASS |
-| CP-13 | Read back Vercel Production | New copy and CSS are present on the live homepage | PENDING |
+| CP-13 | Read back Vercel Production | New copy and CSS are present on the live homepage | PASS |
 | CP-14 | Inspect desktop/mobile in user Chrome | No undesirable wrapping or overlap after the longer copy is rendered | PENDING |
 
 ## Notes
@@ -39,3 +39,13 @@
 - The header CTA was aligned to “Start Free Lesson” for consistency with the hero CTA.
 - The mobile conversion bar remains concise as “Start now” to preserve limited screen width.
 - Browser-rendered visual verification remains dependent on screenshots from the user's Chrome, per the project constraint.
+
+## Production Evidence
+
+- `https://chinesebloom.vercel.app/`: HTTP 200, 41,326 bytes
+- `https://chinesebloom.vercel.app/free-lesson`: HTTP 200, 26,573 bytes
+- Production CSS: HTTP 200, 56,107 bytes
+- All approved hero, four-step, transformation, method, and bottom-CTA strings were found in the production HTML.
+- Indicator microcopy and transformation-label styles were found in the deployed CSS.
+- GitHub implementation commits: `6092ba4` (copy) and `6b516dd` (supporting CSS)
+- Iteration report head before production evidence: `2087033`
