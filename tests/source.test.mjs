@@ -105,6 +105,13 @@ test("implements the selected option-three conversion hero", async () => {
   assert.match(player, /player-method/);
 });
 
+test("prevents the homepage hero from being nested in the legacy two-column grid", async () => {
+  const css = await read("app/globals.css");
+  assert.match(css, /\.home-page \.hero \{[\s\S]*?display: block;[\s\S]*?width: 100%;/);
+  assert.match(css, /\.home-page \.hero-copy \{[\s\S]*?padding: 72px clamp\(42px, 5vw, 84px\) 58px;/);
+  assert.match(css, /@media \(max-width: 680px\)[\s\S]*?\.home-page \.hero-copy \{[\s\S]*?padding: 45px 0 104px;/);
+});
+
 test("uses a compact mobile layout for every free-lesson round", async () => {
   const css = await read("app/globals.css");
   assert.match(css, /lesson-shell\.shell[\s\S]*gap: 12px/);
