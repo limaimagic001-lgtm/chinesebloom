@@ -182,3 +182,24 @@ test("makes the locked transcript a clear non-button status", async () => {
   assert.match(lesson, /LockKeyhole/);
   assert.doesNotMatch(lesson, /<button[^>]*>\s*Transcript unlocks after dictation/);
 });
+
+test("balances the desktop lesson columns without filler", async () => {
+  const css = await read("app/globals.css");
+  // Scoped to the two-column layout only; below 961px the sidebar becomes a
+  // horizontal step row and must be untouched.
+  assert.match(
+    css,
+    /@media \(min-width: 961px\)[\s\S]*?\.lesson-shell \{[\s\S]*?grid-template-columns: 292px minmax\(0, 1fr\);/,
+  );
+  assert.match(
+    css,
+    /@media \(min-width: 961px\)[\s\S]*?\.lesson-step-button \{[\s\S]*?min-height: 54px;/,
+  );
+  // The audio card keeps its 560-620px reading measure; the right third is
+  // filled with a second decorative ring instead of wider text.
+  assert.match(
+    css,
+    /@media \(min-width: 961px\)[\s\S]*?\.audio-stage::before \{[\s\S]*?border-radius: 50%;/,
+  );
+  assert.doesNotMatch(css, /\.audio-stage p \{[^}]*max-width: [6-9]\d\dpx/);
+});

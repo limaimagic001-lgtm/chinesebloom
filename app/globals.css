@@ -1721,3 +1721,64 @@ body { background: var(--paper); color: var(--ink); }
     transform: none !important;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* UI polish, round 2: the two desktop whitespace items left open in   */
+/* TEST-REPORT-2026-08-31-UI-POLISH.md. Decorative and spacing only.   */
+/* ------------------------------------------------------------------ */
+
+/* Only where the lesson layout is actually two columns. Below 961px the
+   sidebar becomes a horizontal step row and none of this applies. */
+@media (min-width: 961px) {
+  /* The sidebar card measured 447px against a 690-1491px workspace. It is
+     not made taller with filler; it is given the internal breathing room
+     its cramped 24px rhythm was missing, which also widens the step
+     labels so they stop hugging their pills. */
+  .lesson-shell {
+    grid-template-columns: 292px minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .lesson-sidebar {
+    padding: 27px 26px 24px;
+  }
+
+  .lesson-sidebar h1 {
+    margin-bottom: 8px;
+  }
+
+  .lesson-progress {
+    margin: 26px 0 22px;
+  }
+
+  .lesson-step-list {
+    gap: 8px;
+  }
+
+  .lesson-step-button {
+    min-height: 54px;
+    padding: 12px 12px 12px 10px;
+  }
+
+  /* The green audio card is 837px wide but its text measure stops at
+     560-620px, which is the correct reading width. Rather than stretch the
+     text, the right third becomes deliberate composition: two concentric
+     ink rings echoing the Song motif already used on the homepage. */
+  .audio-stage::after {
+    right: -74px;
+    bottom: -124px;
+    width: 340px;
+    height: 340px;
+  }
+
+  .audio-stage::before {
+    position: absolute;
+    right: 34px;
+    bottom: -34px;
+    width: 186px;
+    height: 186px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 50%;
+    content: "";
+  }
+}
