@@ -107,6 +107,8 @@ test("implements the selected option-one messaging in the option-three layout", 
   assert.match(page, /GET STARTED FOR FREE/);
   assert.match(page, /Speak Mandarin naturally in your next conversation\./);
   assert.match(page, /Mandarin audio, instant dictation feedback, and guided speaking prompts\./);
+  assert.match(page, /Train your ears on natural Mandarin in context—no text safety net\./);
+  assert.doesNotMatch(page, /real, unscripted native conversations|native audio|real-time speaking prompts/);
   for (const indicator of ["Tune your ear", "Catch the gaps", "Match the flow", "Make it yours"]) {
     assert.match(page, new RegExp(indicator));
   }
