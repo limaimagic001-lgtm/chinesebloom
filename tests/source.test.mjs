@@ -64,7 +64,7 @@ test("targets the selected Mandarin listening and speaking search intent", async
   assert.match(layout, /Mandarin Listening & Speaking Practice for Intermediate Learners/);
   assert.match(page, /MANDARIN LISTENING &amp; SPEAKING PRACTICE/);
   assert.match(page, /HSK 3–4/);
-  assert.match(page, /One natural conversation\. Four focused steps\. Twenty minutes\./);
+  assert.match(page, /One conversation\. Four focused steps\. 20 minutes to fluency\./);
   for (const step of ["Listen", "Dictate", "Shadow", "Retell"]) {
     assert.match(page, new RegExp(step));
   }
@@ -73,8 +73,8 @@ test("targets the selected Mandarin listening and speaking search intent", async
 test("keeps the free-lesson conversion path immediate and low-friction", async () => {
   const page = await read("app/page.tsx");
   const player = await read("components/phrase-player.tsx");
-  assert.match(page, /Start the free lesson/);
-  assert.match(page, /No account needed/);
+  assert.match(page, /Start Free Lesson/);
+  assert.match(page, /No account needed\. Start in 10 seconds\./);
   assert.match(page, /mobile-conversion-bar/);
   assert.match(player, /SpeechSynthesisUtterance/);
   assert.match(player, /Play Mandarin phrase/);
@@ -93,13 +93,20 @@ test("uses the selected four-step brand mark instead of a Chinese character glyp
   assert.doesNotMatch(page + lesson, />中</);
 });
 
-test("implements the selected option-three conversion hero", async () => {
+test("implements the selected option-one messaging in the option-three layout", async () => {
   const page = await read("app/page.tsx");
   const player = await read("components/phrase-player.tsx");
   assert.match(page, /className="home-page"/);
   assert.match(page, /hero-method-steps/);
-  assert.match(page, /Understanding every word/);
-  assert.match(page, /Responding in the moment/);
+  assert.match(page, /Hear it clearly\./);
+  assert.match(page, /Say it naturally\./);
+  assert.match(page, /Stuck in your head/);
+  assert.match(page, /Replying on reflex/);
+  assert.match(page, /Turn active listening into automatic speech\./);
+  assert.match(page, /Ready to speak Mandarin with confidence\?/);
+  for (const indicator of ["Tune your ear", "Catch the gaps", "Match the flow", "Make it yours"]) {
+    assert.match(page, new RegExp(indicator));
+  }
   assert.match(player, /Play the conversation/);
   assert.match(player, /player-waveform/);
   assert.match(player, /player-method/);
