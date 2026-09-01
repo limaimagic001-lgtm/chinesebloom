@@ -121,7 +121,47 @@ test("prevents the homepage hero from being nested in the legacy two-column grid
   const css = await read("app/globals.css");
   assert.match(css, /\.home-page \.hero \{[\s\S]*?display: block;[\s\S]*?width: 100%;/);
   assert.match(css, /\.home-page \.hero-copy \{[\s\S]*?padding: 72px clamp\(42px, 5vw, 84px\) 58px;/);
-  assert.match(css, /@media \(max-width: 680px\)[\s\S]*?\.home-page \.hero-copy \{[\s\S]*?padding: 45px 0 104px;/);
+  // The 104px bottom reserve was replaced by 36px: `body:has(.mobile-conversion-bar)`
+  // already reserves 76px for the sticky bar, and the extra space showed up as a
+  // dead gap between the four-step row and the hero photo. Overlap is now covered
+  // by the geometry assertion below rather than by a fixed padding value.
+  assert.match(css, /@media \(max-width: 680px\)[\s\S]*?\.home-page \.hero-copy \{[\s\S]*?padding: 45px 0 36px;/);
+  assert.match(css, /body:has\(\.mobile-conversion-bar\) \{\s*padding-bottom: 76px;/);
+});
+
+test("keeps a free-lesson entry point in the phone header", async () => {
+  const css = await read("app/globals.css");
+  // Below 680px the header CTA button is hidden in favour of the sticky bar, so
+  // the text links must not all be hidden as well or the header becomes a
+  // dead logo with no navigation.
+  assert.match(
+    css,
+    /@media \(max-width: 680px\)[\s\S]*?\.home-page \.header-links > a:not\(\.header-cta\) \{[\s\S]*?display: inline-flex;/,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 680px\)[\s\S]*?\.home-page \.header-links > a\[href="#method"\] \{\s*display: none;/,
+  );
+});
+
+test("stacks the hero four-step row two-by-two on phones", async () => {
+  const css = await read("app/globals.css");
+  // A single row forced 8px microcopy and clipped the fourth step at 375px.
+  assert.match(
+    css,
+    /@media \(max-width: 680px\)[\s\S]*?\.home-page \.hero-method-steps \{[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);/,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 680px\)[\s\S]*?\.home-page \.hero-step-arrow \{\s*display: none;/,
+  );
+});
+
+test("gives every interactive element a visible keyboard focus ring", async () => {
+  const css = await read("app/globals.css");
+  assert.match(css, /\.home-page a:focus-visible[\s\S]*?outline: 3px solid/);
+  assert.match(css, /\.lesson-page button:focus-visible/);
+  assert.match(css, /\.lesson-page textarea:focus-visible/);
 });
 
 test("uses a compact mobile layout for every free-lesson round", async () => {
@@ -141,4 +181,25 @@ test("makes the locked transcript a clear non-button status", async () => {
   assert.match(lesson, /Transcript unlocks after dictation/);
   assert.match(lesson, /LockKeyhole/);
   assert.doesNotMatch(lesson, /<button[^>]*>\s*Transcript unlocks after dictation/);
+});
+
+test("balances the desktop lesson columns without filler", async () => {
+  const css = await read("app/globals.css");
+  // Scoped to the two-column layout only; below 961px the sidebar becomes a
+  // horizontal step row and must be untouched.
+  assert.match(
+    css,
+    /@media \(min-width: 961px\)[\s\S]*?\.lesson-shell \{[\s\S]*?grid-template-columns: 292px minmax\(0, 1fr\);/,
+  );
+  assert.match(
+    css,
+    /@media \(min-width: 961px\)[\s\S]*?\.lesson-step-button \{[\s\S]*?min-height: 54px;/,
+  );
+  // The audio card keeps its 560-620px reading measure; the right third is
+  // filled with a second decorative ring instead of wider text.
+  assert.match(
+    css,
+    /@media \(min-width: 961px\)[\s\S]*?\.audio-stage::before \{[\s\S]*?border-radius: 50%;/,
+  );
+  assert.doesNotMatch(css, /\.audio-stage p \{[^}]*max-width: [6-9]\d\dpx/);
 });
